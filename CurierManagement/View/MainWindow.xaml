@@ -76,11 +76,6 @@
                                  Width="150"
                                  Background="#F5F5F5"
                                  Height="25"/>
-                        <Button Content="Копіювати" 
-                                Command="{Binding CopyIPCommand}"
-                                Width="80" 
-                                Height="25"
-                                Margin="10,0,0,0"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0,5">
@@ -90,11 +85,6 @@
                                  Width="150"
                                  Background="#F5F5F5"
                                  Height="25"/>
-                        <Button Content="Копіювати" 
-                                Command="{Binding CopyPortCommand}"
-                                Width="80" 
-                                Height="25"
-                                Margin="10,0,0,0"/>
                     </StackPanel>
 
                     <TextBlock Text="{Binding ConnectionStatusText}"
@@ -159,9 +149,9 @@
                     Foreground="White"
                     Margin="5"/>
 
+            <!-- IsEnabled="{Binding CanGoToWork}" -->
             <Button Content="Перейти до роботи"
                     Command="{Binding GoToWorkCommand}"
-                    IsEnabled="{Binding CanGoToWork}"
                     Width="140" 
                     Height="35"
                     FontSize="14"
