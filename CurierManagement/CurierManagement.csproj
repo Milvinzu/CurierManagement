@@ -6,8 +6,17 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+
+	<ApplicationIcon>App.ico</ApplicationIcon>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="App.ico" />
+    <None Remove="Resources\AppIcon.svg" />
+  </ItemGroup>
+
+
+	
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.3.0" />
@@ -21,12 +30,18 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.8" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3405.78" />
+    <PackageReference Include="SharpVectors" Version="1.8.4.2" />
     <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Hubs\" />
-    <Folder Include="View\Work\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="App.ico" />
+    <Resource Include="Resources\AppIcon.svg" />
   </ItemGroup>
 
 </Project>
