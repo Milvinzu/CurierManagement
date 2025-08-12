@@ -10,8 +10,9 @@ namespace CurierManagement.Model
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public decimal HourlyRcate { get; set; }
+        public decimal HourlyRate { get; set; }
         public decimal RatePerKm { get; set; }
+        public decimal RatePerOrder { get; set; }
 
         public ICollection<DeliveryPackage> Packages { get; set; } = new List<DeliveryPackage>();
     }

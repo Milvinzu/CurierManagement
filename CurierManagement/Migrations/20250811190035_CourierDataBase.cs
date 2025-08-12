@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CurierManagement.Migrations
 {
     /// <inheritdoc />
-    public partial class AddCourierPackages : Migration
+    public partial class CourierDataBase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,8 +18,9 @@ namespace CurierManagement.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    HourlyRcate = table.Column<decimal>(type: "TEXT", nullable: false),
-                    RatePerKm = table.Column<decimal>(type: "TEXT", nullable: false)
+                    HourlyRate = table.Column<decimal>(type: "TEXT", nullable: false),
+                    RatePerKm = table.Column<decimal>(type: "TEXT", nullable: false),
+                    RatePerOrder = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,6 +34,7 @@ namespace CurierManagement.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     PackageName = table.Column<string>(type: "TEXT", nullable: false),
+                    CreatedBy = table.Column<string>(type: "TEXT", nullable: false),
                     CourierId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -59,6 +61,7 @@ namespace CurierManagement.Migrations
                     OrderDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     TotalAmount = table.Column<decimal>(type: "TEXT", nullable: false),
                     Tips = table.Column<decimal>(type: "TEXT", nullable: false),
+                    CreatedBy = table.Column<string>(type: "TEXT", nullable: false),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     Latitude = table.Column<double>(type: "REAL", nullable: false),
                     Longitude = table.Column<double>(type: "REAL", nullable: false),

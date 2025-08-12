@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CurierManagement.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250810182739_AddCourierPackages")]
-    partial class AddCourierPackages
+    [Migration("20250811190035_CourierDataBase")]
+    partial class CourierDataBase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,7 @@ namespace CurierManagement.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("HourlyRcate")
+                    b.Property<decimal>("HourlyRate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -34,6 +34,9 @@ namespace CurierManagement.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("RatePerKm")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("RatePerOrder")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -49,6 +52,10 @@ namespace CurierManagement.Migrations
 
                     b.Property<int>("CourierId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PackageName")
                         .IsRequired()
@@ -69,6 +76,10 @@ namespace CurierManagement.Migrations
 
                     b.Property<int?>("CourierId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("CustomerName")
                         .IsRequired()

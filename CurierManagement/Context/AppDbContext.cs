@@ -1,8 +1,10 @@
 ﻿using CurierManagement.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SQLitePCL;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +21,14 @@ namespace CurierManagement.Context
         static AppDbContext()
         {
             Batteries.Init();
+            
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlite("Data Source=courierdb.sqlite");
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "courierdb.sqlite");
+            options.UseSqlite($"Data Source={dbPath}");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
