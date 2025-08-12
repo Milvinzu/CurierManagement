@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CurierManagement"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         SizeToContent="Height" Width="600" Title="Система управління кур'єрами"
-        ResizeMode="CanMinimize">
+        ResizeMode="CanMinimize" Icon="{StaticResource AppIcon}">
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

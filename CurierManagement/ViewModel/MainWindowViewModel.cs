@@ -9,6 +9,10 @@ using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CurierManagement.Service;
+using CurierManagement.View.Work;
+using CurierManagement.ViewModel;
+using CurierManagement.DataBase.Data_Service;
+using CurierManagement.Context;
 
 namespace CurierManagement.ViewModels
 {
@@ -141,15 +145,19 @@ namespace CurierManagement.ViewModels
         [RelayCommand]
         private void GoToWork()
         {
-            //var chatWindow = new ChatWindow();
-            //var chatViewModel = new ChatWindowViewModel(_connection, UserName, IsPrimaryMode);
-            //chatWindow.DataContext = chatViewModel;
+            var chatWindow = new WorkView();
+            AppDbContext dbContext = new AppDbContext();
+            var coureRep = new CourierRepository(dbContext);
+            var orderRep = new OrderRepository(dbContext);
+            var packageRep = new DeliveryPackegRepository(dbContext);
+            var chatViewModel = new WorkViewModel();
+            chatWindow.DataContext = chatViewModel;
 
-            //// Закриваємо поточне вікно і показуємо чат
-            //Application.Current.MainWindow = chatWindow;
-            //var currentWindow = Application.Current.Windows.Cast<Window>().FirstOrDefault(w => w.GetType().Name == "MainWindow");
-            //currentWindow?.Hide();
-            //chatWindow.Show();
+            // Закриваємо поточне вікно і показуємо чат
+            Application.Current.MainWindow = chatWindow;
+            var currentWindow = Application.Current.Windows.Cast<Window>().FirstOrDefault(w => w.GetType().Name == "MainWindow");
+            currentWindow?.Hide();
+            chatWindow.Show();
         }
 
         private async Task StartServerAsync()

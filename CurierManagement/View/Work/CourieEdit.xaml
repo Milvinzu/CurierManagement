@@ -1,0 +1,153 @@
+﻿<Page x:Class="CurierManagement.View.Work.CourieEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CurierManagement.View.Work"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Background="White">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Форма для додавання/редагування кур'єра -->
+        <Border Grid.Column="0" 
+                BorderBrush="LightGray" 
+                BorderThickness="1" 
+                CornerRadius="5"
+                Padding="15">
+            <StackPanel>
+                <TextBlock Text="{Binding IsEditing, Converter={StaticResource BoolToStringConverter}, 
+                           ConverterParameter='Редагування кур`єра|Додавання кур`єра'}" 
+                           HorizontalAlignment="Center"  
+                           Margin="0 0 0 20" 
+                           FontSize="18"
+                           FontWeight="Bold"/>
+
+                <!-- Ім'я -->
+                <TextBlock Text="Ім'я кур'єра:" Margin="0 0 0 5" FontWeight="Medium"/>
+                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" 
+                         Height="30" 
+                         Margin="0 0 0 15"
+                         Padding="5"/>
+
+                <!-- Ставка в час -->
+                <TextBlock Text="Ставка в час (грн):" Margin="0 0 0 5" FontWeight="Medium"/>
+                <TextBox Text="{Binding HourlyRate, UpdateSourceTrigger=PropertyChanged}" 
+                         Height="30" 
+                         Margin="0 0 0 15"
+                         Padding="5"/>
+
+                <!-- Ставка за км -->
+                <TextBlock Text="Ставка за км (грн):" Margin="0 0 0 5" FontWeight="Medium"/>
+                <TextBox Text="{Binding RatePerKm, UpdateSourceTrigger=PropertyChanged}" 
+                         Height="30" 
+                         Margin="0 0 0 15"
+                         Padding="5"/>
+
+                <!-- Ставка за замовлення -->
+                <TextBlock Text="Ставка за замовлення (грн):" Margin="0 0 0 5" FontWeight="Medium"/>
+                <TextBox Text="{Binding RatePerOrder, UpdateSourceTrigger=PropertyChanged}" 
+                         Height="30" 
+                         Margin="0 0 0 20"
+                         Padding="5"/>
+
+                <!-- Кнопки дій -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="{Binding IsEditing, Converter={StaticResource BoolToStringConverter}, 
+                            ConverterParameter='Оновити|Додати'}" 
+                            Height="35" 
+                            Width="80"
+                            Margin="0 0 10 0"
+                            Command="{Binding AddOrUpdateCourierCommand}"
+                            Background="DodgerBlue"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Cursor="Hand"/>
+
+                    <Button Content="Очистити" 
+                            Height="35" 
+                            Width="80"
+                            Command="{Binding ClearFormCommand}"
+                            Background="Gray"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Cursor="Hand"/>
+                </StackPanel>
+
+                <!-- Кнопки управління -->
+                <StackPanel Orientation="Horizontal" 
+                           HorizontalAlignment="Center" 
+                           Margin="0 15 0 0">
+                    <Button Content="Видалити обраного" 
+                            Height="35" 
+                            Width="120"
+                            Margin="0 0 10 0"
+                            Command="{Binding DeleteCourierCommand}"
+                            Background="Crimson"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Cursor="Hand"/>
+
+                    <Button Content="Оновити список" 
+                            Height="35" 
+                            Width="120"
+                            Command="{Binding RefreshCouriersCommand}"
+                            Background="ForestGreen"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Cursor="Hand"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Список кур'єрів -->
+        <Border Grid.Column="2" 
+                BorderBrush="LightGray" 
+                BorderThickness="1" 
+                CornerRadius="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" 
+                           Text="Список кур'єрів" 
+                           HorizontalAlignment="Center" 
+                           Margin="10"
+                           FontSize="16"
+                           FontWeight="Bold"/>
+
+                <DataGrid Grid.Row="1" 
+                          Style="{StaticResource ModernDataGrid}"
+                          ItemsSource="{Binding Couriers}"
+                          SelectedItem="{Binding SelectedCourier}"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          SelectionMode="Single"
+                          GridLinesVisibility="Horizontal"
+                          HeadersVisibility="Column">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ім'я кур'єра" 
+                                          Binding="{Binding Name}"
+                                          Width="*"/>
+                        <DataGridTextColumn Header="Ставка/год" 
+                                          Binding="{Binding HourlyRcate, StringFormat='{}{0:F2} грн'}"
+                                          Width="100"/>
+                        <DataGridTextColumn Header="Ставка/км" 
+                                          Binding="{Binding RatePerKm, StringFormat='{}{0:F2} грн'}"
+                                          Width="100"/>
+                        <DataGridTextColumn Header="Ставка/замовлення" 
+                                          Binding="{Binding RatePerOrder, StringFormat='{}{0:F2} грн'}"
+                                          Width="120"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
