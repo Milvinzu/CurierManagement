@@ -19,9 +19,7 @@ namespace CurierManagement.Model
         public string CreatedBy { get; set; } = string.Empty;
 
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
-
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
+        public string WebAddressInMap { get; set; }
         public int? CourierId { get; set; }
         public Courier? Courier { get; set; }
 

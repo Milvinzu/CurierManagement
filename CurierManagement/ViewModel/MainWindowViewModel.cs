@@ -13,6 +13,7 @@ using CurierManagement.View.Work;
 using CurierManagement.ViewModel;
 using CurierManagement.DataBase.Data_Service;
 using CurierManagement.Context;
+using CurierManagement.Model.Basic_models;
 
 namespace CurierManagement.ViewModels
 {
@@ -152,6 +153,7 @@ namespace CurierManagement.ViewModels
             var packageRep = new DeliveryPackegRepository(dbContext);
             var chatViewModel = new WorkViewModel();
             chatWindow.DataContext = chatViewModel;
+            SessionData.UserName = UserName;
 
             // Закриваємо поточне вікно і показуємо чат
             Application.Current.MainWindow = chatWindow;

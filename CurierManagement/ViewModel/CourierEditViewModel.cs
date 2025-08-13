@@ -66,7 +66,6 @@ namespace CurierManagement.ViewModel
             {
                 if (IsEditing && SelectedCourier != null)
                 {
-                    // Редагування існуючого кур'єра
                     SelectedCourier.Name = Name;
                     SelectedCourier.HourlyRate = HourlyRate;
                     SelectedCourier.RatePerKm = RatePerKm;
@@ -78,7 +77,6 @@ namespace CurierManagement.ViewModel
                 }
                 else
                 {
-                    // Додавання нового кур'єра
                     var newCourier = new Courier
                     {
                         Name = Name,

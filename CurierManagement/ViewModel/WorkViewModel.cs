@@ -26,7 +26,7 @@ namespace CurierManagement.ViewModel
         [RelayCommand]
         private void OpenOrderCreation()
         {
-            MessageBox.Show("Створення замовлень - в розробці", "Інформація", MessageBoxButton.OK, MessageBoxImage.Information);
+            CurrentPage = new CreateOrder();
         }
     }
 }
